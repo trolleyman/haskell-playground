@@ -163,32 +163,52 @@ loadMaybe "lwss" = Just $ parseBoard s
                "                   "]
 
 loadMaybe "r-pent" = Just $ parseBoard s
-    where s = ["                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "            OO            ",
-               "           OO             ",
-               "            O             ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          ",
-               "                          "]
+    where s = ["                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                 OO                                       ",
+               "                                OO                                        ",
+               "                                 O                                        ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          ",
+               "                                                                          "]
 
 wrap :: Int -> Int -> Board -> (Int, Int)
 wrap x y b = (xr, yr)
@@ -219,8 +239,8 @@ next b = map (\a -> map f' a) $ map (\a -> map f a) [[(x, y) | x <- [0..w-1]] | 
                         | otherwise = Dead  -- No lovers :'(
 
 nextN :: Int -> Board -> Board
-nextN 0 b = b
-nextN n b = nextN (n-1) (next b)
+nextN 0 b = seq 0 b
+nextN n b = nextN (n-1) (seq 0 (next b))
 
 trim :: String -> String
 trim = f . f
